@@ -1,6 +1,10 @@
+import CadastroLeitor from "./pages/CadastroLeitor";
+import "./App.css";
+
 function App() {
   return (
-    <h1>Qualquer outra coisa</h1>
+    <CadastroLeitor />
+    
   );
 }
 
