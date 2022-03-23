@@ -1,10 +1,9 @@
-import CadastroLeitor from "./pages/CadastroLeitor";
+import PageRoutes from "./routes";
 import "./App.css";
 
 function App() {
   return (
-    <CadastroLeitor />
-    
+      <PageRoutes />
   );
 }
 

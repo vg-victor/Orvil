@@ -1,4 +1,5 @@
 import React from 'react';
+import "./style.css";
 
 const CadastroLivro = () => {
     return(
@@ -7,3 +8,5 @@ const CadastroLivro = () => {
         </form>
     );
 };
+
+export default CadastroLivro;
