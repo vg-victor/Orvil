@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import { useMatch } from "react-router-dom";
 import "./style.css";
 
 const CadastroLeitor = () => {
@@ -7,6 +8,12 @@ const CadastroLeitor = () => {
   const [telefone, setTelefone] = useState("");
   const [sexo, setSexo] = useState("");
   const [cidade, setCidade] = useState("");
+  const [id, setId] = useState(0);
+  const match = useMatch("/leitor/:id");
+
+  useEffect(() => {
+    setId(match.params.id);
+  }, []);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -21,7 +28,9 @@ const CadastroLeitor = () => {
   return (
     <div className="leitor-body-cadastro">
       <form className="leitor-form" onSubmit={handleSubmit}>
-        <h1 className="leitor-label-cadastro-titulo">Cadastro de Leitor</h1>
+        <h1 className="leitor-label-cadastro-titulo">
+          {id && id > 0 ? "Editar Leitor" : "Cadastro de Leitor"}
+        </h1>
 
         <label htmlFor="input-text" className="leitor-label-name">
           Nome
@@ -83,7 +92,7 @@ const CadastroLeitor = () => {
         />
 
         <button className="leitor-button-submit" type="submit">
-          Criar
+          {id && id > 0 ? "Salvar" : "Criar"}
         </button>
       </form>
     </div>

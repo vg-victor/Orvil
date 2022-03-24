@@ -1,5 +1,6 @@
 import React, { Fragment, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 import "./style.css";
 
 const ListagemLeitor = () => {
@@ -50,6 +51,20 @@ const ListagemLeitor = () => {
     },
   ];
 
+  const alert = (id, nome) => {
+    Swal.fire({
+      icon: "warning",
+      title: `Excluir leitor "${nome}"?`,
+      showCancelButton: true,
+      confirmButtonText: "Sim",
+      confirmButtonColor: "green",
+    }).then((response) => {
+      if (response.isConfirmed) {
+        Swal.fire("Excluido!", "", 'success');
+      }
+    });
+  };
+
   return (
     <body className="leitor-body-listagem">
       <div className="leitor-div-listagem">
@@ -72,16 +87,29 @@ const ListagemLeitor = () => {
               <th>
                 <select className="leitor-select">
                   <option>Ações</option>
-                  <option className="leitor-option-editar" onClick={e => navigate(`/leitor/${leitor.id}`)}>
+                  <option
+                    className="leitor-option-editar"
+                    onClick={() => navigate(`/leitor/${leitor.id}`)}
+                  >
                     Editar
                   </option>
-                  <option className="leitor-option-excluir">Excluir</option>
+                  <option
+                    className="leitor-option-excluir"
+                    onClick={() => alert(leitor.id, leitor.nome)}
+                  >
+                    Excluir
+                  </option>
                 </select>
               </th>
             </tr>
           ))}
         </table>
-        <button className="leitor-button-novo" onClick={e => navigate(`/leitor/0`)}>Novo</button>
+        <button
+          className="leitor-button-novo"
+          onClick={(e) => navigate(`/leitor/0`)}
+        >
+          Novo
+        </button>
       </div>
     </body>
   );
