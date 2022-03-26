@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
-import { useMatch } from "react-router-dom";
+import { useMatch, useNavigate } from "react-router-dom";
 import "./style.css";
+import api from "../../services/api";
+import Swal from "sweetalert2";
 
 const CadastroLeitor = () => {
   const [nome, setNome] = useState("");
@@ -9,26 +11,62 @@ const CadastroLeitor = () => {
   const [sexo, setSexo] = useState("");
   const [cidade, setCidade] = useState("");
   const [id, setId] = useState(0);
+  const [leitor, setLeitor] = useState({});
+  const navigate = useNavigate();
   const match = useMatch("/leitor/:id");
 
-  useEffect(() => {
-    setId(match.params.id);
-  }, []);
-
-  const handleSubmit = (event) => {
+  const submit = async (event) => {
     event.preventDefault();
-    console.log({
-      nome,
-      email,
-      telefone,
-      sexo,
-      cidade,
-    });
+
+    if (!sexo || sexo === "#") {
+      Swal.fire("Selecione o sexo", "", "info");
+      return;
+    }
+
+    if (match.params.id === "0") {
+      let data = {
+        nome,
+        email,
+        telefone,
+        sexo,
+        cidade,
+      };
+      const response = await api.post("leitores", data);
+      response && navigate("/leitores");
+    } else {
+      let data = {
+        ...leitor,
+        nome,
+        email,
+        telefone,
+        sexo,
+        cidade,
+      };
+      const response = await api.patch(`leitores/${match.params.id}`, data);
+      response && navigate("/leitores");
+    }
   };
+
+  const load = async () => {
+    const response = await api.get(`leitores/${match.params.id}`);
+    setLeitor(response.data);
+
+    setNome(response.data.nome);
+    setEmail(response.data.email);
+    setTelefone(response.data.telefone);
+    setSexo(response.data.sexo);
+    setCidade(response.data.cidade);
+  };
+
+  useEffect(() => {
+    if (match.params.id > 0) load();
+    setId(match.params.id);
+  }, [match]);
+
   return (
     <div className="leitor-body-cadastro">
-      <form className="leitor-form" onSubmit={handleSubmit}>
-        <h1 className="leitor-label-cadastro-titulo">
+      <form className="leitor-form" onSubmit={submit}>
+        <h1 className="leitor-h1-cadastro-titulo">
           {id && id > 0 ? "Editar Leitor" : "Cadastro de Leitor"}
         </h1>
 
@@ -36,6 +74,7 @@ const CadastroLeitor = () => {
           Nome
         </label>
         <input
+          required
           type="text"
           id="input-text"
           className="leitor-input-name"
@@ -47,6 +86,7 @@ const CadastroLeitor = () => {
           E-mail
         </label>
         <input
+          required
           type="email"
           id="input-email"
           className="leitor-input-email"
@@ -58,6 +98,7 @@ const CadastroLeitor = () => {
           Telefone
         </label>
         <input
+          required
           type="tel"
           id="input-tel"
           className="leitor-input-telefone"
@@ -72,10 +113,12 @@ const CadastroLeitor = () => {
           required
           id="select-sexo"
           className="leitor-select-sexo"
+          defaultValue="#"
           value={sexo}
           onChange={(e) => setSexo(e.target.value)}
         >
           <option disabled>Selecione o sexo</option>
+          <option value="#"></option>
           <option value="Masculino">Masculino</option>
           <option value="Feminino">Feminino</option>
         </select>
@@ -84,6 +127,7 @@ const CadastroLeitor = () => {
           Cidade
         </label>
         <input
+          required
           type="text"
           id="input-cidade"
           className="leitor-input-cidade"

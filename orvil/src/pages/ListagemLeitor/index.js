@@ -1,55 +1,22 @@
-import React, { Fragment, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./style.css";
+import api from "../../services/api.js";
 
 const ListagemLeitor = () => {
+  const [action, setAction] = useState("");
+  const [leitores, setLeitores] = useState([]);
   const navigate = useNavigate();
-  // useEffect(() => {
-  //   document.body.style.background
-  // },[])
-  const leitores = [
-    {
-      id: 1,
-      nome: "Maycolo",
-      sexo: "Masculino",
-      cidade: "Guaçuí",
-      email: "maycolo@gmail.com",
-      telefone: "(28) 9 9999-9999",
-    },
-    {
-      id: 2,
-      nome: "Victor",
-      sexo: "Masculino",
-      cidade: "Guaçuí",
-      email: "victor@gmail.com",
-      telefone: "(28) 9 9999-9999",
-    },
-    {
-      id: 3,
-      nome: "Maycon React",
-      sexo: "Masculino",
-      cidade: "Guaçuí",
-      email: "maycondouglas@gmail.com",
-      telefone: "(28) 9 9999-9999",
-    },
-    {
-      id: 4,
-      nome: "Maycon React",
-      sexo: "Masculino",
-      cidade: "Guaçuí",
-      email: "maycondouglas@gmail.com",
-      telefone: "(28) 9 9999-9999",
-    },
-    {
-      id: 5,
-      nome: "Maycon React",
-      sexo: "Masculino",
-      cidade: "Guaçuí",
-      email: "maycondouglas@gmail.com",
-      telefone: "(28) 9 9999-9999",
-    },
-  ];
+
+  useEffect(() => {
+    load();
+  }, []);
+
+  const load = async () => {
+    const response = await api.get("leitores");
+    setLeitores([...response.data]);
+  };
 
   const alert = (id, nome) => {
     Swal.fire({
@@ -60,56 +27,83 @@ const ListagemLeitor = () => {
       confirmButtonColor: "green",
     }).then((response) => {
       if (response.isConfirmed) {
-        Swal.fire("Excluido!", "", 'success');
+        excluir(id);
       }
+      if(response.isDenied || response.isDismissed){
+        setAction("ação");
+      }
+    });
+  };
+
+  const excluir = async (id) => {
+    const response = await api.delete(`leitores/${id}`);
+    response && Swal.fire("Excluido!", "", "success").then(() => {
+      load();
     });
   };
 
   return (
     <body className="leitor-body-listagem">
       <div className="leitor-div-listagem">
-        <table className="leitor-table-listagem">
-          <tr>
-            <th className="leitor-tabela-l1">Nome</th>
-            <th className="leitor-tabela-l1">E-mail</th>
-            <th className="leitor-tabela-l1">Telefone</th>
-            <th className="leitor-tabela-l1">Sexo</th>
-            <th className="leitor-tabela-l1">Cidade</th>
-            <th className="leitor-tabela-l1"></th>
-          </tr>
-          {leitores.map((leitor) => (
-            <tr key={`leitor-tabela-tr-${leitor.id}`}>
-              <th>{leitor.nome}</th>
-              <th>{leitor.email}</th>
-              <th>{leitor.telefone}</th>
-              <th>{leitor.sexo}</th>
-              <th>{leitor.cidade}</th>
-              <th>
-                <select className="leitor-select">
-                  <option>Ações</option>
-                  <option
-                    className="leitor-option-editar"
-                    onClick={() => navigate(`/leitor/${leitor.id}`)}
-                  >
-                    Editar
-                  </option>
-                  <option
-                    className="leitor-option-excluir"
-                    onClick={() => alert(leitor.id, leitor.nome)}
-                  >
-                    Excluir
-                  </option>
-                </select>
-              </th>
+        {leitores && leitores.length ? (
+          <table className="leitor-table-listagem">
+            <tr>
+              <th className="leitor-tabela-l1">Nome</th>
+              <th className="leitor-tabela-l1">E-mail</th>
+              <th className="leitor-tabela-l1">Telefone</th>
+              <th className="leitor-tabela-l1">Sexo</th>
+              <th className="leitor-tabela-l1">Cidade</th>
+              <th className="leitor-tabela-l1"></th>
             </tr>
-          ))}
-        </table>
-        <button
-          className="leitor-button-novo"
-          onClick={(e) => navigate(`/leitor/0`)}
-        >
-          Novo
-        </button>
+            {leitores.map((leitor) => (
+              <tr key={`leitor-tabela-tr-${leitor.id}`}>
+                <th>{leitor.nome}</th>
+                <th>{leitor.email}</th>
+                <th>{leitor.telefone}</th>
+                <th>{leitor.sexo}</th>
+                <th>{leitor.cidade}</th>
+                <th>
+                  <select value={action} onChange={(e) => setAction(e.target.value)} className="leitor-select">
+                    <option value="ação">Ações</option>
+                    <option
+                      value="editar"
+                      className="leitor-option-editar"
+                      onClick={() => navigate(`/leitor/${leitor.id}`)}
+                    >
+                      Editar
+                    </option>
+                    <option
+                      value="excluir"
+                      className="leitor-option-excluir"
+                      onClick={() => alert(leitor.id, leitor.nome)}
+                    >
+                      Excluir
+                    </option>
+                  </select>
+                </th>
+              </tr>
+            ))}
+          </table>
+        ) : (
+          <div>
+            <h1>Nenhum registro foi encontrado.</h1>
+            <p>Clique em "Novo registro".</p>
+            <button
+              className="leitor-button-novo"
+              onClick={() => navigate(`/leitor/0`)}
+            >
+              Novo registro
+            </button>
+          </div>
+        )}
+        {leitores && (
+          <button
+            className="leitor-button-novo"
+            onClick={() => navigate(`/leitor/0`)}
+          >
+            Novo
+          </button>
+        )}
       </div>
     </body>
   );
