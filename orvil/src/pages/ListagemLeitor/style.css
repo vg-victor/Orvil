@@ -3,6 +3,10 @@ body,html{
     background-image: linear-gradient(to right, #607466, #AEDCC0);
 }
 
+.body-leitor{
+    margin-top: 10px;
+}
+
 .leitor-div-listagem{
     width: 940px;
     margin-left: auto;

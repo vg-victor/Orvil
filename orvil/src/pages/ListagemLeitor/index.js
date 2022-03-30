@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import "./style.css";
 import api from "../../services/api.js";
+import Navbar from "../../components/Navbar";
 
 const ListagemLeitor = () => {
   const [action, setAction] = useState("");
@@ -29,7 +30,7 @@ const ListagemLeitor = () => {
       if (response.isConfirmed) {
         excluir(id);
       }
-      if(response.isDenied || response.isDismissed){
+      if (response.isDenied || response.isDismissed) {
         setAction("ação");
       }
     });
@@ -37,13 +38,15 @@ const ListagemLeitor = () => {
 
   const excluir = async (id) => {
     const response = await api.delete(`leitores/${id}`);
-    response && Swal.fire("Excluido!", "", "success").then(() => {
-      load();
-    });
+    response &&
+      Swal.fire("Excluido!", "", "success").then(() => {
+        load();
+      });
   };
 
   return (
     <body className="leitor-body-listagem">
+      <Navbar />
       <div className="leitor-div-listagem">
         {leitores && leitores.length ? (
           <table className="leitor-table-listagem">
@@ -63,7 +66,11 @@ const ListagemLeitor = () => {
                 <th>{leitor.sexo}</th>
                 <th>{leitor.cidade}</th>
                 <th>
-                  <select value={action} onChange={(e) => setAction(e.target.value)} className="leitor-select">
+                  <select
+                    value={action}
+                    onChange={(e) => setAction(e.target.value)}
+                    className="leitor-select"
+                  >
                     <option value="ação">Ações</option>
                     <option
                       value="editar"

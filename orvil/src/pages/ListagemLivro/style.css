@@ -1,50 +1,41 @@
+.body-livro {
+  display: block;
+}
+
+.div-livro-listagem {
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
+
 .div-livro-listagem img {
   margin-right: 10px;
   width: 100px;
   height: 152px;
   border-radius: 5px;
-  margin-bottom: 5px;
   position: relative;
-}
-
-.div-livro-listagem {
-  display: flexbox;
-  margin-left: auto;
-  margin-right: auto;
-  padding-right: auto;
-  padding-left: auto;
-  background-color: red;
 }
 
 .livros {
-  width: 357px;
+  display: inline-table;
+  width: 400px;
   height: 152px;
   border-radius: 5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-left: 10px;
-  padding: 10px;
-  border-collapse: collapse;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  margin-left: 2%;
+  padding: 7px;
   background-color: #343e3d;
-  display: inline-flex;
-  position: relative;
 }
 
-.livros h1 {
-  display: block;
+.div-livro-listagem h1 {
   font-size: 20px;
   color: #aedcc0;
-  position: absolute;
 }
 
-.livros p {
-  display: block;
+.div-livro-listagem p {
   color: #aedcc0;
-  position: relative;
 }
 
 .livro-autor-p {
-  display: block;
   margin-bottom: 10px;
-  position: relative;
 }
