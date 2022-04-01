@@ -8,15 +8,21 @@ import Navbar from "../../components/Navbar";
 const ListagemLeitor = () => {
   const [action, setAction] = useState("");
   const [leitores, setLeitores] = useState([]);
+  const [pesquisa, setPesquisa] = useState("");
   const navigate = useNavigate();
 
   useEffect(() => {
     load();
-  }, []);
+  }, [pesquisa]);
 
   const load = async () => {
-    const response = await api.get("leitores");
-    setLeitores([...response.data]);
+    if (pesquisa) {
+      const response = await api.get(`leitores/getbyname?name=${pesquisa}`);
+      setLeitores([...response.data]);
+    } else {
+      const response = await api.get("leitores");
+      setLeitores([...response.data]);
+    }
   };
 
   const alert = (id, nome) => {
@@ -46,9 +52,9 @@ const ListagemLeitor = () => {
 
   return (
     <body className="leitor-body-listagem">
-      <Navbar />
+      <Navbar setPesquisa={setPesquisa} />
       <div className="leitor-div-listagem">
-        {leitores && leitores.length ? (
+        {((leitores) && (leitores.length)) ? (
           <table className="leitor-table-listagem">
             <tr>
               <th className="leitor-tabela-l1">Nome</th>
@@ -58,7 +64,7 @@ const ListagemLeitor = () => {
               <th className="leitor-tabela-l1">Cidade</th>
               <th className="leitor-tabela-l1"></th>
             </tr>
-            {leitores.map((leitor) => (
+            {leitores && leitores.length && leitores.map((leitor) => (
               <tr key={`leitor-tabela-tr-${leitor.id}`}>
                 <th>{leitor.nome}</th>
                 <th>{leitor.email}</th>
@@ -103,15 +109,15 @@ const ListagemLeitor = () => {
             </button>
           </div>
         )}
-        {leitores && (
-          <button
-            className="leitor-button-novo"
-            onClick={() => navigate(`/leitor/0`)}
-          >
-            Novo
-          </button>
-        )}
       </div>
+      {(leitores) && (leitores.length) ? (
+        <button
+          className="leitor-button-novo"
+          onClick={() => navigate(`/leitor/0`)}
+        >
+          Novo
+        </button>
+      ) : <p></p>}
     </body>
   );
 };

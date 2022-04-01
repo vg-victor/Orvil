@@ -136,7 +136,7 @@ const CadastroLeitor = () => {
         />
 
         <button className="leitor-button-submit" type="submit">
-          {id && id > 0 ? "Salvar" : "Criar"}
+          {id && id > 0 ? "Salvar" : "Cadastrar"}
         </button>
       </form>
     </div>
