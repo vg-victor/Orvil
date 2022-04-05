@@ -39,3 +39,45 @@
 .livro-autor-p {
   margin-bottom: 10px;
 }
+
+.button-sem-cadastro {
+  text-align: center;
+  width: 30%;
+  margin: auto;
+  margin-top: 20px;
+  padding: 7px;
+  color: #aedcc0;
+  display: block;
+  border: none;
+  border-radius: 3px;
+  background-color: #aedcc0;
+  color: #343e3d;
+  transition: 0.5s;
+}
+
+.button-sem-cadastro:hover {
+  transition: 0.5s;
+  color: #aedcc0;
+  background-color: #343e3d;
+  cursor: pointer;
+  box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.253);
+}
+
+.livros button {
+  margin-left: 6%;
+  /* margin-right: 50%; */
+  margin-top: 13px;
+  text-align: center;
+  width: 27%;
+  padding: 7px;
+  color: #aedcc0;
+  border: none;
+  border-radius: 3px;
+  transition: 0.5s;
+}
+
+.livros button:hover {
+  transition: 0.5s;
+  cursor: pointer;
+  box-shadow: 0px 1px 3px black;
+}

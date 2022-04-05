@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useMatch } from "react-router-dom";
+import { useMatch, useNavigate } from "react-router-dom";
 import "./style.css";
 import api from "../../services/api.js";
 import Navbar from "../../components/Navbar";
@@ -7,22 +7,21 @@ import Navbar from "../../components/Navbar";
 const ListagemLivro = () => {
   const [livros, setLivros] = useState([]);
   const [pesquisa, setPesquisa] = useState("");
+  const navigate = useNavigate();
 
   useEffect(() => {
     load();
-  }, [pesquisa])
+  }, [pesquisa]);
 
   const load = async () => {
-    if(pesquisa){
+    if (pesquisa) {
       const response = await api.get(`livros/getbytitle?title=${pesquisa}`);
-      setLivros([...response.data]); 
-    }
-    else{
+      setLivros([...response.data]);
+    } else {
       const response = await api.get("livros");
       setLivros([...response.data]);
     }
-  }
-
+  };
 
   // const teste = [
   //   {
@@ -269,19 +268,30 @@ const ListagemLivro = () => {
 
   return (
     <body className="body-livro">
-      <Navbar setPesquisa={setPesquisa}/>
+      <Navbar setPesquisa={setPesquisa} local="listagemlivro"/>
       <ul className="div-livro-listagem">
-        {livros.map((livro) => (
-          <li key={`card-livros-li-${livro.id}`} className="livros">
-            <img align="left" src={livro.capa} />
-            <h1>{livro.titulo}</h1>
-            <p className="livro-autor-p">{livro.autor}</p>
-            <p>Editora: {livro.editora}</p>
-            <p>Lançamento: {livro.ano}</p>
-            <p>Edição: {livro.edicao}</p>
-            <p>Gênero: {livro.genero}</p>
-          </li>
-        ))}
+        {ListagemLivro == null ? (
+          <>
+            <h1>Cadastre um livro</h1>
+            <button className="button-sem-cadastro" onClick={() => navigate("livro/0")}>Novo livro</button>
+          </>
+        ) : (
+          <>
+            {livros.map((livro) => (
+              <li key={`card-livros-li-${livro.id}`} className="livros">
+                <img align="left" src={livro.capa} />
+                <h1>{livro.titulo}</h1>
+                <p className="livro-autor-p">{livro.autor}</p>
+                <p>Editora: {livro.editora}</p>
+                <p>Lançamento: {livro.ano}</p>
+                <p>Edição: {livro.edicao}</p>
+                <p>Gênero: {livro.genero}</p>
+                <button style={{backgroundColor: "blue", color: "#aedcc0"}} onClick={() => navigate(`livro/${livro.id}`)}>Editar</button>
+                <button style={{backgroundColor: "red", color: "#aedcc0"}}>Excluir</button>
+              </li>
+            ))}
+          </>
+        )}
       </ul>
     </body>
   );

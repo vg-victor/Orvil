@@ -62,7 +62,7 @@ const CadastroLivro = () => {
 
   useEffect(() => {
     setId(match.params.id);
-    if (id > 0) load();
+    if (match.params.id > 0) load();
   }, [match]);
 
   return (
@@ -75,13 +75,13 @@ const CadastroLivro = () => {
           width: "250px",
           height: "380px",
           position: "absolute",
-          top: "40%",
-          left: "30%",
+          top: "50%",
+          left: "28%",
           marginRight: "-50%",
           transform: "translate(-50%, -50%)",
         }}
         src={capa}
-        alt={`Capa do livro ${titulo}`}
+        alt={`Capa do livroo ${titulo}`}
       />
       <h1 className="h1-livro">
         {id && id > 0 ? "Atualizar Livro" : "Cadastro de Livro"}
@@ -157,7 +157,6 @@ const CadastroLivro = () => {
         value={edicao}
         onChange={(e) => {
           setEdicao(e.target.value);
-          console.log("oié");
         }}
       />
 
