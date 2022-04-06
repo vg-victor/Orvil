@@ -3,6 +3,7 @@ import { useMatch, useNavigate } from "react-router-dom";
 import "./style.css";
 import api from "../../services/api.js";
 import Navbar from "../../components/Navbar";
+import Swal from "sweetalert2";
 
 const ListagemLivro = () => {
   const [livros, setLivros] = useState([]);
@@ -23,257 +24,45 @@ const ListagemLivro = () => {
     }
   };
 
-  // const teste = [
-  //   {
-  //     id: 1,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/91YQ3e1VNKL.jpg",
-  //     titulo: "Cristianismo puro e simples",
-  //     autor: "C. S. Lewis",
-  //     editora: "Thomas Nelson Brasil",
-  //     ano: "2017",
-  //     edicao: "1ª",
-  //     genero: "1. Cristianismo. 2. Vida cristã.",
-  //   },
-  //   {
-  //     id: 2,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 3,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 4,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/91YQ3e1VNKL.jpg",
-  //     titulo: "Cristianismo puro e simples",
-  //     autor: "C. S. Lewis",
-  //     editora: "Thomas Nelson Brasil",
-  //     ano: "2017",
-  //     edicao: "1ª",
-  //     genero: "1. Cristianismo. 2. Vida cristã.",
-  //   },
-  //   {
-  //     id: 5,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 6,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 7,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/91YQ3e1VNKL.jpg",
-  //     titulo: "Cristianismo puro e simples",
-  //     autor: "C. S. Lewis",
-  //     editora: "Thomas Nelson Brasil",
-  //     ano: "2017",
-  //     edicao: "1ª",
-  //     genero: "1. Cristianismo. 2. Vida cristã.",
-  //   },
-  //   {
-  //     id: 8,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 9,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 10,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/91YQ3e1VNKL.jpg",
-  //     titulo: "Cristianismo puro e simples",
-  //     autor: "C. S. Lewis",
-  //     editora: "Thomas Nelson Brasil",
-  //     ano: "2017",
-  //     edicao: "1ª",
-  //     genero: "1. Cristianismo. 2. Vida cristã.",
-  //   },
-  //   {
-  //     id: 11,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 12,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 13,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/91YQ3e1VNKL.jpg",
-  //     titulo: "Cristianismo puro e simples",
-  //     autor: "C. S. Lewis",
-  //     editora: "Thomas Nelson Brasil",
-  //     ano: "2017",
-  //     edicao: "1ª",
-  //     genero: "1. Cristianismo. 2. Vida cristã.",
-  //   },
-  //   {
-  //     id: 14,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 15,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 16,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/91YQ3e1VNKL.jpg",
-  //     titulo: "Cristianismo puro e simples",
-  //     autor: "C. S. Lewis",
-  //     editora: "Thomas Nelson Brasil",
-  //     ano: "2017",
-  //     edicao: "1ª",
-  //     genero: "1. Cristianismo. 2. Vida cristã.",
-  //   },
-  //   {
-  //     id: 17,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 18,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 19,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/91YQ3e1VNKL.jpg",
-  //     titulo: "Cristianismo puro e simples",
-  //     autor: "C. S. Lewis",
-  //     editora: "Thomas Nelson Brasil",
-  //     ano: "2017",
-  //     edicao: "1ª",
-  //     genero: "1. Cristianismo. 2. Vida cristã.",
-  //   },
-  //   {
-  //     id: 20,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 21,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 22,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/91YQ3e1VNKL.jpg",
-  //     titulo: "Cristianismo puro e simples",
-  //     autor: "C. S. Lewis",
-  //     editora: "Thomas Nelson Brasil",
-  //     ano: "2017",
-  //     edicao: "1ª",
-  //     genero: "1. Cristianismo. 2. Vida cristã.",
-  //   },
-  //   {
-  //     id: 23,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  //   {
-  //     id: 24,
-  //     capa: "https://images-na.ssl-images-amazon.com/images/I/71y-4dpFyHL.jpg",
-  //     titulo: "Jogador Número Um",
-  //     autor: "Ernest Cline",
-  //     editora: "Intrínseca",
-  //     ano: "2021",
-  //     edicao: "1ª",
-  //     genero: "1. Ficção científica.",
-  //   },
-  // ];
+  const alert = (titulo, id) => {
+    Swal.fire({
+      icon: "warning",
+      title: `Excluir livro "${titulo}"?`,
+      showCancelButton: true,
+      confirmButtonText: "Sim",
+      confirmButtonColor: "green",
+    }).then((response) => {
+      if(response.isConfirmed){
+        excluir(id);
+      }
+      if(response.isDenied || response.isDismissed){
+        load();
+      }
+    })
+  };
+
+  const excluir = async (id) => {
+    const response = await api.delete(`livros/${id}`);
+    response &&
+      Swal.fire("Excluido", "", "success").then(() => {
+        load();
+      });
+  };
 
   return (
     <body className="body-livro">
-      <Navbar setPesquisa={setPesquisa} local="listagemlivro"/>
+      <Navbar setPesquisa={setPesquisa} local="listagemlivro" />
       <ul className="div-livro-listagem">
-        {ListagemLivro == null ? (
+        {ListagemLivro === null ? (
           <>
-            <h1>Cadastre um livro</h1>
-            <button className="button-sem-cadastro" onClick={() => navigate("livro/0")}>Novo livro</button>
+          {console.log("aqui")}
+            <h1 style={{marginTop: "120px", textAlign: "center", fontSize: "50px", color: "#343e3d"}}>Cadastre um livro</h1>
+            <button
+              className="button-sem-cadastro"
+              onClick={() => navigate("livro/0")}
+            >
+              Novo livro
+            </button>
           </>
         ) : (
           <>
@@ -286,8 +75,18 @@ const ListagemLivro = () => {
                 <p>Lançamento: {livro.ano}</p>
                 <p>Edição: {livro.edicao}</p>
                 <p>Gênero: {livro.genero}</p>
-                <button style={{backgroundColor: "blue", color: "#aedcc0"}} onClick={() => navigate(`livro/${livro.id}`)}>Editar</button>
-                <button style={{backgroundColor: "red", color: "#aedcc0"}}>Excluir</button>
+                <button
+                  style={{ backgroundColor: "blue", color: "#aedcc0" }}
+                  onClick={() => navigate(`livro/${livro.id}`)}
+                >
+                  Editar
+                </button>
+                <button
+                  style={{ backgroundColor: "red", color: "#aedcc0" }}
+                  onClick={() => alert(livro.titulo, livro.id)}
+                >
+                  Excluir
+                </button>
               </li>
             ))}
           </>
