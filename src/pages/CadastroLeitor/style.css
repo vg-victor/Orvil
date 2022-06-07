@@ -1,0 +1,140 @@
+.leitor-body-cadastro{
+    height: 100%;
+    background-image: linear-gradient(to right, #607466, #AEDCC0);
+}
+
+.leitor-form{
+    background-color: #343E3D;
+    position: absolute;
+    padding: 3%;
+    border-radius: 5%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 270px;
+}
+
+.leitor-h1-cadastro-titulo{
+    font-size: 30px;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #AEDCC0;
+    display: block;
+}
+
+.leitor-label-name{
+    text-align: center;
+    padding: 1px;
+    color: #AEDCC0;
+    display: block;
+}
+
+.leitor-input-name{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    border: none;
+    outline: none;
+    height: 21px;
+    border-radius: 3px;
+}
+
+.leitor-label-email{
+    text-align: center;
+    margin-top: 5%;
+    padding: 1px;
+    color: #AEDCC0;
+    display: block;
+}
+
+.leitor-input-email{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    border: none;
+    outline: none;
+    height: 21px;
+    border-radius: 3px;
+}
+
+.leitor-label-telefone{
+    text-align: center;
+    margin-top: 5%;
+    padding: 1px;
+    color: #AEDCC0;
+    display: block;
+}
+
+.leitor-input-telefone{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    border: none;
+    outline: none;
+    height: 21px;
+    border-radius: 3px;
+}
+
+.leitor-label-sexo{
+    text-align: center;
+    margin-top: 5%;
+    padding: 1px;
+    color: #AEDCC0;
+    display: block;
+}
+
+.leitor-select-sexo{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 83%;
+    border: none;
+    outline: none;
+    height: 21px;
+    border-radius: 3px;
+}
+
+.leitor-label-cidade{
+    text-align: center;
+    margin-top: 5%;
+    padding: 1px;
+    color: #AEDCC0;
+    display: block;
+}
+
+.leitor-input-cidade{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    border: none;
+    outline: none;
+    height: 21px;
+    border-radius: 3px;
+}
+
+.leitor-button-submit{
+    text-align: center;
+    width: 70%;
+    margin: auto;
+    margin-top: 10%;
+    padding: 7px;
+    color: #AEDCC0;
+    display: block;
+    border: none;
+    border-radius: 3px;
+    background-color: #AEDCC0;
+    color: #343E3D;
+    transition: 0.5s;
+}
+
+.leitor-button-submit:hover{
+    transition: 0.5s;
+    color: #AEDCC0;
+    background-color: #607466;
+    cursor: pointer;
+    box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.253);
+}
