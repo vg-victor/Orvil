@@ -32,13 +32,13 @@ const ListagemLivro = () => {
       confirmButtonText: "Sim",
       confirmButtonColor: "green",
     }).then((response) => {
-      if(response.isConfirmed){
+      if (response.isConfirmed) {
         excluir(id);
       }
-      if(response.isDenied || response.isDismissed){
+      if (response.isDenied || response.isDismissed) {
         load();
       }
-    })
+    });
   };
 
   const excluir = async (id) => {
@@ -53,10 +53,18 @@ const ListagemLivro = () => {
     <body className="body-livro">
       <Navbar setPesquisa={setPesquisa} local="listagemlivro" />
       <ul className="div-livro-listagem">
-        {ListagemLivro === null ? (
+        {livros && !livros.length ? (
           <>
-          {console.log("aqui")}
-            <h1 style={{marginTop: "120px", textAlign: "center", fontSize: "50px", color: "#343e3d"}}>Cadastre um livro</h1>
+            <h1
+              style={{
+                marginTop: "120px",
+                textAlign: "center",
+                fontSize: "50px",
+                color: "#343e3d",
+              }}
+            >
+              Cadastre um livro
+            </h1>
             <button
               className="button-sem-cadastro"
               onClick={() => navigate("livro/0")}
