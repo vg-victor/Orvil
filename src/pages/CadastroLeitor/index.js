@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useMatch, useNavigate } from "react-router-dom";
+import { useMatch, useNavigate, Link } from "react-router-dom";
 import "./style.css";
 import api from "../../services/api";
 import Swal from "sweetalert2";
@@ -66,6 +66,13 @@ const CadastroLeitor = () => {
   return (
     <div className="leitor-body-cadastro">
       <form className="leitor-form" onSubmit={submit}>
+        <Link
+          className="link"
+          to="/leitores"
+          style={{ color: "#AEDCC0"}}
+        >
+          ← Voltar
+        </Link>
         <h1 className="leitor-h1-cadastro-titulo">
           {id && id > 0 ? "Editar Leitor" : "Cadastro de Leitor"}
         </h1>

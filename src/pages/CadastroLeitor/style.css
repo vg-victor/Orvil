@@ -6,7 +6,7 @@
 .leitor-form{
     background-color: #343E3D;
     position: absolute;
-    padding: 3%;
+    padding: 2%;
     border-radius: 5%;
     top: 50%;
     left: 50%;
@@ -14,7 +14,12 @@
     width: 270px;
 }
 
+.leitor-form .link{
+    margin-left: -20px;
+}
+
 .leitor-h1-cadastro-titulo{
+    margin-top: 30px;
     font-size: 30px;
     margin-bottom: 25px;
     text-align: center;

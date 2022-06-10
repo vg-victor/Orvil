@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useMatch, useNavigate } from "react-router-dom";
+import { useMatch, useNavigate, Link } from "react-router-dom";
 import api from "../../services/api";
 import "./style.css";
 import img from "../../assets/img/logo.png";
@@ -68,6 +68,7 @@ const CadastroLivro = () => {
 
   return (
     <form onSubmit={submit} className="form-livro">
+      <Link className="span" to="/" style={{color: "#AEDCC0"}}>← Voltar</Link>
       <img
         style={{
           backgroundColor: "#343E3D",

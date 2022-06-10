@@ -26,6 +26,7 @@ const ListagemLeitor = () => {
   };
 
   const alert = (id, nome) => {
+    console.log("aqui")
     Swal.fire({
       icon: "warning",
       title: `Excluir leitor "${nome}"?`,
