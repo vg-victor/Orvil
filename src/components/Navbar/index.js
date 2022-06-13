@@ -11,8 +11,8 @@ const Navbar = ({ setPesquisa, local }) => {
       <div className="navbar-div">
         <Link className="navbar-link-inicial" to="/">
           <img
-            style={{ width: "60px", height: "60px" }}
-            src="logo.png"
+            style={{ width: "45px", height: "45px" }}
+            src="orvil.ico"
             alt="Página inicial"
           />
         </Link>

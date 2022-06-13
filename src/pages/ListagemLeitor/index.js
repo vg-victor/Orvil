@@ -6,7 +6,7 @@ import api from "../../services/api.js";
 import Navbar from "../../components/Navbar";
 
 const ListagemLeitor = () => {
-  const [action, setAction] = useState("");
+  const [action, setAction] = useState(["", {}]);
   const [leitores, setLeitores] = useState([]);
   const [pesquisa, setPesquisa] = useState("");
   const navigate = useNavigate();
@@ -14,6 +14,15 @@ const ListagemLeitor = () => {
   useEffect(() => {
     load();
   }, [pesquisa]);
+
+  useEffect(() => {
+    if (action[0] === "editar") {
+      navigate(`/leitor/${action[1].id}`);
+    }
+    if (action[0] === "excluir") {
+      alert(action[1].id, action[1].nome);
+    }
+  }, [action]);
 
   const load = async () => {
     if (pesquisa) {
@@ -26,7 +35,6 @@ const ListagemLeitor = () => {
   };
 
   const alert = (id, nome) => {
-    console.log("aqui")
     Swal.fire({
       icon: "warning",
       title: `Excluir leitor "${nome}"?`,
@@ -55,7 +63,7 @@ const ListagemLeitor = () => {
     <body className="leitor-body-listagem">
       <Navbar setPesquisa={setPesquisa} />
       <div className="leitor-div-listagem">
-        {((leitores) && (leitores.length)) ? (
+        {leitores && leitores.length ? (
           <table className="leitor-table-listagem">
             <tr>
               <th className="leitor-tabela-l1">Nome</th>
@@ -65,38 +73,32 @@ const ListagemLeitor = () => {
               <th className="leitor-tabela-l1">Cidade</th>
               <th className="leitor-tabela-l1"></th>
             </tr>
-            {leitores && leitores.length && leitores.map((leitor) => (
-              <tr key={`leitor-tabela-tr-${leitor.id}`}>
-                <th>{leitor.nome}</th>
-                <th>{leitor.email}</th>
-                <th>{leitor.telefone}</th>
-                <th>{leitor.sexo}</th>
-                <th>{leitor.cidade}</th>
-                <th>
-                  <select
-                    value={action}
-                    onChange={(e) => setAction(e.target.value)}
-                    className="leitor-select"
-                  >
-                    <option value="ação">Ações</option>
-                    <option
-                      value="editar"
-                      className="leitor-option-editar"
-                      onClick={() => navigate(`/leitor/${leitor.id}`)}
+            {leitores &&
+              leitores.length &&
+              leitores.map((leitor) => (
+                <tr key={`leitor-tabela-tr-${leitor.id}`}>
+                  <th>{leitor.nome}</th>
+                  <th>{leitor.email}</th>
+                  <th>{leitor.telefone}</th>
+                  <th>{leitor.sexo}</th>
+                  <th>{leitor.cidade}</th>
+                  <th>
+                    <select
+                      value={action}
+                      onChange={(e) => setAction([e.target.value, leitor])}
+                      className="leitor-select"
                     >
-                      Editar
-                    </option>
-                    <option
-                      value="excluir"
-                      className="leitor-option-excluir"
-                      onClick={() => alert(leitor.id, leitor.nome)}
-                    >
-                      Excluir
-                    </option>
-                  </select>
-                </th>
-              </tr>
-            ))}
+                      <option value="ação">Ações</option>
+                      <option value="editar" className="leitor-option-editar">
+                        Editar
+                      </option>
+                      <option value="excluir" className="leitor-option-excluir">
+                        Excluir
+                      </option>
+                    </select>
+                  </th>
+                </tr>
+              ))}
           </table>
         ) : (
           <div>
@@ -111,14 +113,16 @@ const ListagemLeitor = () => {
           </div>
         )}
       </div>
-      {(leitores) && (leitores.length) ? (
+      {leitores && leitores.length ? (
         <button
           className="leitor-button-novo"
           onClick={() => navigate(`/leitor/0`)}
         >
           Novo
         </button>
-      ) : <p></p>}
+      ) : (
+        <p></p>
+      )}
     </body>
   );
 };
