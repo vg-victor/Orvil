@@ -1,4 +1,5 @@
-body,html {
+body,
+html {
   height: 100%;
   background-image: linear-gradient(to right, #607466, #aedcc0);
 }
@@ -75,13 +76,13 @@ body,html {
 }
 
 .leitor-select {
+  display: block;
   text-align: center;
   width: auto;
   margin: auto;
   margin-top: 2%;
   padding: 7px;
   color: #aedcc0;
-  display: block;
   border: none;
   border-radius: 3px;
   background-color: #aedcc0;
@@ -98,4 +99,36 @@ body,html {
 .leitor-option-editar {
   background-color: rgb(18, 62, 128);
   color: #aedcc0;
+}
+
+.aluguel {
+  cursor: pointer;
+  display: block;
+  text-align: center;
+  width: auto;
+  right: 50%;
+  margin: auto;
+  margin-top: 2%;
+  margin-bottom: 5px;
+  padding: 7px;
+  color: #aedcc0;
+  border: none;
+  border-radius: 3px;
+  background-color: #aedcc0;
+  color: #343e3d;
+  transition: 0.5s;
+  box-shadow: 0px 0px 2px #343e3d;
+}
+
+.pesguisar{
+  margin-top: 10px;
+  background-color: #aedcc0;
+  color: #343e3d;
+  text-align: center;
+  display: inline;
+  border: none;
+  outline: none;
+  width: 300px;
+  height: 25px;
+  border-radius: 3px;
 }

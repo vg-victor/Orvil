@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar";
 import Swal from "sweetalert2";
 
 const ListagemLivro = () => {
+  const [action, setAction] = useState(["", {}]);
   const [livros, setLivros] = useState([]);
   const [pesquisa, setPesquisa] = useState("");
   const navigate = useNavigate();
@@ -13,6 +14,11 @@ const ListagemLivro = () => {
   useEffect(() => {
     load();
   }, [pesquisa]);
+
+  useEffect(() => {
+    if (action[0] === "editar") navigate(`/livro/${action[1].id}`);
+    if (action[0] === "excluir") alert(action[1].id, action[1].titulo);
+  }, [action]);
 
   const load = async () => {
     if (pesquisa) {
@@ -83,18 +89,34 @@ const ListagemLivro = () => {
                 <p>Lançamento: {livro.ano}</p>
                 <p>Edição: {livro.edicao}</p>
                 <p>Gênero: {livro.genero}</p>
-                <button
-                  style={{ backgroundColor: "blue", color: "#aedcc0" }}
-                  onClick={() => navigate(`livro/${livro.id}`)}
+                <select
+                  className="livro-select"
+                  value={action}
+                  onChange={(e) => setAction([e.target.value, livro])}
                 >
-                  Editar
-                </button>
-                <button
-                  style={{ backgroundColor: "red", color: "#aedcc0" }}
-                  onClick={() => alert(livro.titulo, livro.id)}
-                >
-                  Excluir
-                </button>
+                  <option>Ações</option>
+                  <option
+                    value="editar"
+                    style={{
+                      textAlign: "center",
+                      backgroundColor: "blue",
+                      color: "#aedcc0",
+                    }}
+                  >
+                    Editar
+                  </option>
+                  <option
+                    value="excluir"
+                    style={{
+                      textAlign: "center",
+                      backgroundColor: "red",
+                      color: "#aedcc0",
+                    }}
+                  >
+                    Excluir
+                  </option>
+                  <option>Alugar</option>
+                </select>
               </li>
             ))}
           </>
