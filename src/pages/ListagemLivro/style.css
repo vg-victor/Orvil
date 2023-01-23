@@ -17,18 +17,6 @@
   position: relative;
 }
 
-.livros {
-  display: inline-table;
-  width: 400px;
-  height: 152px;
-  border-radius: 5px;
-  margin-top: 50px;
-  margin-bottom: 5px;
-  margin-left: 2%;
-  padding: 7px;
-  background-color: #343e3d;
-}
-
 .div-livro-listagem h1 {
   font-size: 20px;
   color: #aedcc0;
@@ -36,10 +24,6 @@
 
 .div-livro-listagem p {
   color: #aedcc0;
-}
-
-.livro-autor-p {
-  margin-bottom: 10px;
 }
 
 .button-sem-cadastro {
@@ -82,19 +66,3 @@
   cursor: pointer;
   box-shadow: 0px 1px 3px black;
 }
-
-.livro-select {
-  display: block;
-  text-align: center;
-  margin-left: 80%;
-  margin-top: 2%;
-  padding: 7px;
-  color: #aedcc0;
-  border: none;
-  border-radius: 3px;
-  background-color: #aedcc0;
-  color: #343e3d;
-  transition: 0.5s;
-  box-shadow: 0px 0px 2px #343e3d;
-}
-

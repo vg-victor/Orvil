@@ -68,7 +68,7 @@ const CadastroLivro = () => {
 
   return (
     <form onSubmit={submit} className="form-livro">
-      <Link className="span" to="/" style={{color: "#AEDCC0"}}>← Voltar</Link>
+      <Link className="span" to="/" style={{color: "#AEDCC0", left: "405px"}}>← Voltar</Link>
       <img
         style={{
           backgroundColor: "#343E3D",
