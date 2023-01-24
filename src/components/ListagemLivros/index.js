@@ -20,10 +20,10 @@ export default ({
         <p
           className="alugado"
           style={{
-            color: "#ff0000",
+            color: "#343e3d",
           }}
         >
-          Alugado
+          ALUGADO
         </p>
       )}
       {mostrarAcoes && (
@@ -53,7 +53,8 @@ export default ({
           >
             Excluir
           </option>
-          <option value="alugar">Alugar</option>
+          {!livro?.alugado && (
+            <option value="alugar">Alugar</option>)}
         </select>
       )}
     </li>

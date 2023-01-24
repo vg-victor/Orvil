@@ -105,7 +105,13 @@ const CadastroLeitor = () => {
           Telefone
         </label>
         <input
+          // size='11'
+          // maxlength='11'
+          // onKeyPress='formata(this,""(##)####-####"")'
           required
+          formControlName="sGPTypeDeliveryId"
+          placeholder="(xx) xxxxx-xxxx"
+          pattern="^\(\d{2}\) \d{5}-\d{4}$"
           type="tel"
           id="input-tel"
           className="leitor-input-telefone"
