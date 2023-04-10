@@ -1,89 +1,85 @@
 .navbar {
   background-color: #343e3d;
-  display: flex;
-  justify-content: space-between;
   width: 100%;
-  height: 12%;
-  position: fixed;
-  z-index: 10;
+  height: 80px;
+  position: absolute;
 }
 
 .navbar-ol {
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, 80%);
+  margin: auto;
+  width: 1000px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 200px;
 }
 
-.navbar-div {
-  display: block;
-  position: relative;
-  width: 940px;
-  margin-left: auto;
-  margin-right: auto;
+.div-link-img-incial {
+  max-width: 45px;
+  width: 100%;
+  height: 45px;
+  line-height: 45px;
 }
 
-.navbar-link-inicial {
-  margin-top: 20px;
-  position: absolute;
-  top: 10px;
+.div-ipt-pesquisar-btn-buscar {
+  /* margin: auto; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 400px;
 }
 
 .navbar-input-pesquisa {
-  margin-top: 10px;
   background-color: #aedcc0;
   color: #343e3d;
   text-align: center;
-  display: inline;
   border: none;
-  outline: none;
-  width: 300px;
+  width: 100%;
   height: 25px;
   border-radius: 3px;
+  outline: none;
 }
 
 .navbar-button-buscar {
-  margin-top: 10px;
-  display: inline;
-  float: right;
+  background-color: #aedcc0;
   color: #343e3d;
   border: none;
-  width: 60px;
+  max-width: 60px;
+  width: 100%;
   height: 27px;
   margin-left: 7px;
   border-radius: 3px;
-  background-color: #aedcc0;
   cursor: pointer;
 }
 
+.div-links-nvlivro-leitores {
+  text-align: center;
+  height: 25px;
+  line-height: 25px;
+}
+
 .navbar-link-novolivro {
-  margin-top: 10px;
-  position: absolute;
   text-decoration: none;
   color: #aedcc0;
-  display: inline-block;
-  top: 7px;
-  margin-left: 200px;
-  width: 71px;
+  margin-right: 25px;
 }
 
 .navbar-link-novolivro:hover {
-  padding: 5px;
   background-color: #aedcc0;
   color: #343e3d;
+  height: 25px;
+  line-height: 25px;
 }
 
 .navbar-link-leitores {
-  margin-top: 10px;
-  position: absolute;
   text-decoration: none;
   color: #aedcc0;
-  display: inline-block;
-  top: 7px;
-  margin-left: 300px;
 }
 
 .navbar-link-leitores:hover {
-  padding: 5px;
   background-color: #aedcc0;
   color: #343e3d;
+  height: 25px;
+  line-height: 25px;
 }
