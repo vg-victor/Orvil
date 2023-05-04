@@ -10,7 +10,7 @@ const Navbar = ({ setPesquisa, local }) => {
       <Link to="/">
         <img
           style={{ width: "45px", height: "45px" }}
-          src="orvil.ico"
+          src="/orvil.ico"
           alt="Página inicial"
           className="logo_img"
         />
@@ -32,10 +32,10 @@ const Navbar = ({ setPesquisa, local }) => {
       <div className="links">
         {local === "listagemlivro" ? (
           <>
-            <Link to="livro/0" className="link">
+            <Link to="/livro/0" className="link">
               Novo livro
             </Link>
-            <Link to="leitores" className="link">
+            <Link to="/leitores" className="link">
               Leitores
             </Link>
           </>

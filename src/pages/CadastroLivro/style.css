@@ -4,184 +4,75 @@
   box-sizing: border-box;
 }
 
-.form-livro {
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  padding: 100px 0 50px;
+}
+
+.form_livro {
   background-color: #343e3d;
-  margin: auto;
-  top: 100px;
-  position: relative;
-  padding: 3%;
-  padding-left: 25%;
-  border-radius: 5%;
-  width: 270px;
-}
-
-.form-livro .span {
-  margin-left: -55%;
-  margin-top: -20px;
-  display: inline-block;
-  position: absolute;
-}
-
-.h1-livro {
-  position: relative;
-  font-size: 30px;
-  margin-bottom: 25px;
-  text-align: center;
   color: #aedcc0;
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+  border-radius: 20px;
+  gap: 50px;
+  box-shadow: 0 0 50px 10px rgba(0, 0, 0, 0.2);
 }
 
-.label-livro-capa {
-  text-align: center;
-  padding: 1px;
-  color: #aedcc0;
-  display: block;
+.h1_livro {
+  font-size: 50px;
+  padding-bottom: 30px;
 }
 
-.input-livro-capa {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  border: none;
-  outline: none;
-  height: 21px;
-  border-radius: 3px;
+.img_capa {
+  width: 250px;
 }
 
-.label-livro-titulo {
-  text-align: center;
-  margin-top: 5%;
-  padding: 1px;
-  color: #aedcc0;
-  display: block;
+.form_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
 }
 
-.input-livro-titulo {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  border: none;
-  outline: none;
-  height: 21px;
-  border-radius: 3px;
-}
-
-.label-livro-autor {
-  text-align: center;
-  margin-top: 5%;
-  padding: 1px;
-  color: #aedcc0;
-  display: block;
-}
-
-.input-livro-autor {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  border: none;
-  outline: none;
-  height: 21px;
-  border-radius: 3px;
-}
-
-.label-livro-editora {
-  text-align: center;
-  margin-top: 5%;
-  padding: 1px;
-  color: #aedcc0;
-  display: block;
-}
-
-.input-livro-editora {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  border: none;
-  outline: none;
-  height: 21px;
-  border-radius: 3px;
-}
-
-.label-livro-ano {
-  text-align: center;
-  margin-top: 5%;
-  padding: 1px;
-  color: #aedcc0;
-  display: block;
-}
-
-.input-livro-ano {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  border: none;
-  outline: none;
-  height: 21px;
-  border-radius: 3px;
-}
-
-.label-livro-edicao {
-  text-align: center;
-  margin-top: 5%;
-  padding: 1px;
-  color: #aedcc0;
-  display: block;
-}
-
-.input-livro-edicao {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  border: none;
-  outline: none;
-  height: 21px;
-  border-radius: 3px;
-}
-
-.label-livro-genero {
-  text-align: center;
-  margin-top: 5%;
-  padding: 1px;
-  color: #aedcc0;
-  display: block;
-}
-
-.input-livro-genero {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 80%;
-  border: none;
-  outline: none;
-  height: 21px;
-  border-radius: 3px;
-}
-
-.button-livro-cadastrar-submit {
-  text-align: center;
-  width: 70%;
-  margin: auto;
-  margin-top: 10%;
-  padding: 7px;
-  color: #aedcc0;
-  display: block;
-  border: none;
-  border-radius: 3px;
+.inputs {
+  margin-bottom: 10px;
+  width: 230px;
+  height: 25px;
   background-color: #aedcc0;
-  color: #343e3d;
-  transition: 0.5s;
+  border: none;
+  outline: none;
+  border-radius: 3px;
 }
 
-.button-livro-cadastrar-submit:hover {
-  transition: 0.5s;
-  color: #aedcc0;
-  background-color: #607466;
+.inputs:hover {
+  transform: scale(1.03);
+}
+
+.labels {
+  text-align: center;
+  margin-bottom: 3px;
+}
+
+.button_cadastrar {
+  font-size: 17px;
+  margin-top: 30px;
+  width: 170px;
+  height: 40px;
+  background-color: #aedcc0;
+  border: none;
+  border-radius: 3px;
+  color: #343e3d;
   cursor: pointer;
-  box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.253);
+  transition: 0.3s;
+}
+
+.button_cadastrar:hover {
+  box-shadow: 0 0 25px 5px rgba(0, 0, 0, 0.2);
+  transform: scale(1.1);
 }

@@ -3,6 +3,7 @@ import { useMatch, useNavigate, Link } from "react-router-dom";
 import api from "../../services/api";
 import "./style.css";
 import img from "../../assets/img/logo.png";
+import Navbar from "../../components/Navbar";
 
 const CadastroLivro = () => {
   const [capa, setCapa] = useState("");
@@ -67,117 +68,116 @@ const CadastroLivro = () => {
   }, [match]);
 
   return (
-    <form onSubmit={submit} className="form-livro">
-      <Link className="span" to="/" style={{color: "#AEDCC0", left: "405px"}}>← Voltar</Link>
-      <img
-        style={{
-          backgroundColor: "#343E3D",
-          padding: "3%",
-          borderRadius: "5%",
-          width: "250px",
-          height: "380px",
-          position: "absolute",
-          top: "50%",
-          left: "28%",
-          marginRight: "-50%",
-          transform: "translate(-50%, -50%)",
-        }}
-        src={capa ? capa : img}
-        alt={`Capa do livro ${titulo}`}
-      />
-      <h1 className="h1-livro">
-        {id && id > 0 ? "Atualizar Livro" : "Cadastro de Livro"}
-      </h1>
-      <label htmlFor="input-capa" className="label-livro-capa">
-        Insira a url da capa
-      </label>
-      <input
-        required
-        type="url"
-        id="input-capa"
-        className="input-livro-capa"
-        value={capa}
-        onChange={(e) => setCapa(e.target.value)}
-      />
+    <>
+      {/* <Link className="link_voltar" to="/">
+        ← Voltar
+      </Link> */}
+      <Navbar />
+      <main className="container">
+        <form onSubmit={submit} className="form_livro">
+          <img
+            className="img_capa"
+            src={capa ? capa : img}
+            alt={`Capa do livro ${titulo}`}
+          />
+          <div className="form_content">
+            <h1 className="h1_livro">
+              {id && id > 0 ? "Atualizar Livro" : "Cadastro de Livro"}
+            </h1>
 
-      <label htmlFor="input-titulo" className="label-livro-titulo">
-        Título
-      </label>
-      <input
-        required
-        type="text"
-        id="input-titulo"
-        className="input-livro-titulo"
-        value={titulo}
-        onChange={(e) => setTitulo(e.target.value)}
-      />
+            <label htmlFor="input-capa" className="labels">
+              Insira a url da capa
+            </label>
+            <input
+              required
+              type="url"
+              id="input-capa"
+              className="inputs"
+              value={capa}
+              onChange={(e) => setCapa(e.target.value)}
+            />
 
-      <label htmlFor="input-autor" className="label-livro-autor">
-        Autor(a)
-      </label>
-      <input
-        required
-        type="text"
-        id="input-autor"
-        className="input-livro-autor"
-        value={autor}
-        onChange={(e) => setAutor(e.target.value)}
-      />
+            <label htmlFor="input-titulo" className="labels">
+              Título
+            </label>
+            <input
+              required
+              type="text"
+              id="input-titulo"
+              className="inputs"
+              value={titulo}
+              onChange={(e) => setTitulo(e.target.value)}
+            />
 
-      <label htmlFor="input-editora" className="label-livro-editora">
-        Editora
-      </label>
-      <input
-        required
-        type="text"
-        id="input-editora"
-        className="input-livro-editora"
-        value={editora}
-        onChange={(e) => setEditora(e.target.value)}
-      />
+            <label htmlFor="input-autor" className="labels">
+              Autor(a)
+            </label>
+            <input
+              required
+              type="text"
+              id="input-autor"
+              className="inputs"
+              value={autor}
+              onChange={(e) => setAutor(e.target.value)}
+            />
 
-      <label htmlFor="input-ano" className="label-livro-ano">
-        Ano
-      </label>
-      <input
-        required
-        type="number"
-        id="input-ano"
-        className="input-livro-ano"
-        value={ano}
-        onChange={(e) => setAno(e.target.value)}
-      />
+            <label htmlFor="input-editora" className="labels">
+              Editora
+            </label>
+            <input
+              required
+              type="text"
+              id="input-editora"
+              className="inputs"
+              value={editora}
+              onChange={(e) => setEditora(e.target.value)}
+            />
 
-      <label htmlFor="input-edicao" className="label-livro-edicao">
-        Edição
-      </label>
-      <input
-        required
-        type="number"
-        id="input-edicao"
-        className="input-livro-edicao"
-        value={edicao}
-        onChange={(e) => {
-          setEdicao(e.target.value);
-        }}
-      />
+            <label htmlFor="input-ano" className="labels">
+              Ano
+            </label>
+            <input
+              required
+              type="number"
+              id="input-ano"
+              className="inputs"
+              value={ano}
+              onChange={(e) => setAno(e.target.value)}
+            />
 
-      <label htmlFor="input-genero" className="label-livro-genero">
-        Gênero
-      </label>
-      <input
-        required
-        type="text"
-        id="input-genero"
-        className="input-livro-genero"
-        value={genero}
-        onChange={(e) => setGenero(e.target.value)}
-      />
+            <label htmlFor="input-edicao" className="labels">
+              Edição
+            </label>
+            <input
+              required
+              type="number"
+              id="input-edicao"
+              className="inputs"
+              value={edicao}
+              onChange={(e) => {
+                setEdicao(e.target.value);
+              }}
+            />
 
-      <button className="button-livro-cadastrar-submit" type="submit">
-        {id && id > 0 ? "Salvar" : "Cadastrar"}
-      </button>
-    </form>
+            <label htmlFor="input-genero" className="labels">
+              Gênero
+            </label>
+            <input
+              required
+              type="text"
+              id="input-genero"
+              className="inputs"
+              value={genero}
+              onChange={(e) => setGenero(e.target.value)}
+            />
+
+            <button className="button_cadastrar" type="submit">
+              {id && id > 0 ? "Salvar" : "Cadastrar"}
+            </button>
+          </div>
+        </form>
+      </main>
+    </>
   );
 };
 
