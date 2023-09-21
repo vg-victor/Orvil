@@ -67,9 +67,9 @@ const CadastroLeitor = () => {
     <div className="leitor-body-cadastro">
       <form className="leitor-form" onSubmit={submit}>
         <Link
-          className="link"
+          className="link-editar"
           to="/leitores"
-          style={{ color: "#AEDCC0"}}
+          style={{ color: "var(--verde-claro)" }}
         >
           ← Voltar
         </Link>
@@ -77,31 +77,31 @@ const CadastroLeitor = () => {
           {id && id > 0 ? "Editar Leitor" : "Cadastro de Leitor"}
         </h1>
 
-        <label htmlFor="input-text" className="leitor-label-name">
+        <label htmlFor="input-text" className="leitor-label">
           Nome
         </label>
         <input
           required
           type="text"
           id="input-text"
-          className="leitor-input-name"
+          className="leitor-input"
           value={nome}
           onChange={(e) => setNome(e.target.value)}
         />
 
-        <label htmlFor="input-email" className="leitor-label-email">
+        <label htmlFor="input-email" className="leitor-label">
           E-mail
         </label>
         <input
           required
           type="email"
           id="input-email"
-          className="leitor-input-email"
+          className="leitor-input"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <label htmlFor="input-tel" className="leitor-label-telefone">
+        <label htmlFor="input-tel" className="leitor-label">
           Telefone
         </label>
         <input
@@ -114,12 +114,12 @@ const CadastroLeitor = () => {
           pattern="^\(\d{2}\) \d{5}-\d{4}$"
           type="tel"
           id="input-tel"
-          className="leitor-input-telefone"
+          className="leitor-input"
           value={telefone}
           onChange={(e) => setTelefone(e.target.value)}
         />
 
-        <label htmlFor="select-sexo" className="leitor-label-sexo">
+        <label htmlFor="select-sexo" className="leitor-label">
           Sexo
         </label>
         <select
@@ -130,20 +130,19 @@ const CadastroLeitor = () => {
           value={sexo}
           onChange={(e) => setSexo(e.target.value)}
         >
-          <option disabled>Selecione o sexo</option>
-          <option value="#"></option>
-          <option value="Masculino">Masculino</option>
-          <option value="Feminino">Feminino</option>
+          <option className="option-sexo" disabled>Selecione o sexo</option>
+          <option className="option-sexo" value="Masculino">Masculino</option>
+          <option className="option-sexo" value="Feminino">Feminino</option>
         </select>
 
-        <label htmlFor="input-cidade" className="leitor-label-cidade">
+        <label htmlFor="input-cidade" className="leitor-label">
           Cidade
         </label>
         <input
           required
           type="text"
           id="input-cidade"
-          className="leitor-input-cidade"
+          className="leitor-input"
           value={cidade}
           onChange={(e) => setCidade(e.target.value)}
         />

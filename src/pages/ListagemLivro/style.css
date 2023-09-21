@@ -1,12 +1,93 @@
-.body-livro {
-  display: block;
+.modal-alugar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  border-bottom: 1px solid var(--verde-claro);
+  margin-top: 10px;
+}
+
+.btn-modal-alugar {
+  background-color: var(--verde-escuro);
+  color: var(--verde-claro);
+  padding: 7px;
+  border-start-start-radius: 7px;
+  border: 1px solid var(--verde-claro);
+  cursor: pointer;
+  transition: .3s;
+}
+
+.btn-modal-alugar:hover {
+  background-color: var(--verde-claro);
+  color: var(--verde-escuro);
+}
+
+.container-livro-listagem {
+  margin: 0 190px;
 }
 
 .div-livro-listagem {
-  margin-right: 50px;
-  margin-left: 50px;
-  padding-top: 100px;
-  padding-bottom: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 20px 0 20px;
+  /* background-color: green; */
+}
+
+.tela_sem_cadastro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.button_sem_cadastro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+}
+
+.button_sem_cadastro_a {
+  cursor: pointer;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 100%;
+  background-color: transparent;
+  color: #7a9e88;
+  border: 1px solid #7a9e88;
+  border-radius: 3px;
+  font-size: 19px;
+  z-index: 1;
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+.button_sem_cadastro_a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #7a9e88;
+  z-index: -1;
+  transition: 0.5s;
+}
+
+.button_sem_cadastro_a:hover {
+  color: #343e3d;
+}
+
+.button_sem_cadastro_a:hover::before {
+  width: 100%;
 }
 
 .div-livro-listagem img {
@@ -14,39 +95,11 @@
   width: 100px;
   height: 152px;
   border-radius: 5px;
-  position: relative;
 }
 
 .div-livro-listagem h1 {
   font-size: 20px;
-  color: #aedcc0;
-}
-
-.div-livro-listagem p {
-  color: #aedcc0;
-}
-
-.button-sem-cadastro {
-  text-align: center;
-  width: 30%;
-  margin: auto;
-  margin-top: 20px;
-  padding: 7px;
-  color: #aedcc0;
-  display: block;
-  border: none;
-  border-radius: 3px;
-  background-color: #aedcc0;
-  color: #343e3d;
-  transition: 0.5s;
-}
-
-.button-sem-cadastro:hover {
-  transition: 0.5s;
-  color: #aedcc0;
-  background-color: #343e3d;
-  cursor: pointer;
-  box-shadow: 0px 1.5px 3px rgba(0, 0, 0, 0.253);
+  font-weight: 500;
 }
 
 .livros button {
@@ -55,7 +108,7 @@
   text-align: center;
   width: 27%;
   padding: 7px;
-  color: #aedcc0;
+  color: #7a9e88;
   border: none;
   border-radius: 3px;
   transition: 0.5s;

@@ -6,6 +6,8 @@ import Navbar from "../../components/Navbar";
 import Swal from "sweetalert2";
 import ListagemLivros from "../../components/ListagemLivros";
 import Modal from "react-modal";
+import Footer from "../../components/Footer";
+import MainLayout from "../../layout/mainLayout";
 
 const ListagemLivro = () => {
   const [action, setAction] = useState(["", {}]);
@@ -86,11 +88,11 @@ const ListagemLivro = () => {
       leitorId,
       livroId,
       dataEmprestimo,
-      dataDevolucao
-    })
+      dataDevolucao,
+    });
     load();
-    setVisible(false)
-  }
+    setVisible(false);
+  };
 
   return (
     <>
@@ -100,46 +102,50 @@ const ListagemLivro = () => {
         style={customStyles}
         contentLabel="Orvil"
       >
-        {leitores && leitores.map(leitor => (
-          <div>
-            <p>{leitor.nome}</p>
-            <button onClick={(e)=>alugar(leitor.id, action[1].id)}>Alugar</button>
-          </div>
-        ))}
-      </Modal>
-
-      <body className="body-livro">
-        <Navbar setPesquisa={setPesquisa} local="listagemlivro" />
-        <ul className="div-livro-listagem">
-          {livros && !livros.length ? (
-            <>
-              <h1
-                style={{
-                  marginTop: "120px",
-                  textAlign: "center",
-                  fontSize: "50px",
-                  color: "#343e3d",
-                }}
-              >
-                Cadastre um livro
-              </h1>
-              <button
-                className="button-sem-cadastro"
-                onClick={() => navigate("livro/0")}
-              >
-                Novo livro
+        {leitores &&
+          leitores.map((leitor) => (
+            <div className="modal-alugar">
+              <p>{leitor.nome}</p>
+              <button className="btn-modal-alugar" onClick={(e) => alugar(leitor.id, action[1].id)}>
+                Alugar
               </button>
-            </>
-          ) : (
-            <ListagemLivros
-              livros={livros}
-              mostrarAcoes={true}
-              action={action}
-              setAction={setAction}
-            />
-          )}
-        </ul>
-      </body>
+            </div>
+          ))}
+      </Modal>
+      <MainLayout setPesquisa={setPesquisa} local="listagemlivro">
+        <div className="container-livro-listagem">
+          <ul className="div-livro-listagem">
+            {livros && !livros.length ? (
+              <div className="tela_sem_cadastro">
+                <h1
+                  style={{
+                    marginBottom: "15px",
+                    fontSize: "50px",
+                    color: "#7a9e88",
+                  }}
+                >
+                  Cadastre um livro
+                </h1>
+                <div className="button_sem_cadastro">
+                  <a
+                    className="button_sem_cadastro_a"
+                    onClick={() => navigate("livro/0")}
+                  >
+                    Novo livro
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <ListagemLivros
+                livros={livros}
+                mostrarAcoes={true}
+                action={action}
+                setAction={setAction}
+              />
+            )}
+          </ul>
+        </div>
+      </MainLayout>
     </>
   );
 };

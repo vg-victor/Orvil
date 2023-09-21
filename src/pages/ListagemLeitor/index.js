@@ -41,10 +41,15 @@ const ListagemLeitor = () => {
   const alert = (id, nome) => {
     Swal.fire({
       icon: "warning",
-      title: `Excluir leitor "${nome}"?`,
+      iconColor: "var(--verde-claro)",
+      titleText: `Excluir leitor(a) ${nome}?`,
       showCancelButton: true,
       confirmButtonText: "Sim",
-      confirmButtonColor: "green",
+      confirmButtonColor: "var(--verde-claro)",
+      cancelButtonText: "Cancelar",
+      cancelButtonColor: "rgb(38, 48, 46)",
+      background: "var(--verde-escuro)",
+      color: "var(--verde-claro)",
     }).then((response) => {
       if (response.isConfirmed) {
         excluir(id);
@@ -90,15 +95,16 @@ const ListagemLeitor = () => {
         style={customStyles}
         contentLabel="Orvil"
       >
-        <button onClick={() => setVisible(false)} className="aluguel">
-          Fechar
-        </button>
-        <form>
-          <input className="pesguisar" placeholder="Pesquisar" />
-        </form>
-        {alugados.map((item) => (
-          <Alugados />
-        ))}
+        <div className="btn-fechar-ipt-pesquisar">
+          <button onClick={() => setVisible(false)} className="btn-fechar">
+            Fechar
+          </button>
+        </div>
+        <div className="modal-livros-alugados">
+          {alugados.map((item) => (
+            <Alugados key={`alugados-${item.id}`} livro={item} />
+          ))}
+        </div>
       </Modal>
       <body className="leitor-body-listagem">
         <Navbar setPesquisa={setPesquisa} />
@@ -122,29 +128,32 @@ const ListagemLeitor = () => {
                     <th>{leitor.telefone}</th>
                     <th>{leitor.sexo}</th>
                     <th>{leitor.cidade}</th>
-                    <th>
-                      <button
-                        onClick={() => openModal(leitor.id)}
-                        className="aluguel"
-                      >
-                        Livros alugados
-                      </button>
-                      <select
-                        value={action}
-                        onChange={(e) => setAction([e.target.value, leitor])}
-                        className="leitor-select"
-                      >
-                        <option value="ação">Ações</option>
-                        <option value="editar" className="leitor-option-editar">
-                          Editar
-                        </option>
-                        <option
-                          value="excluir"
-                          className="leitor-option-excluir"
+                    <th className="th-btns">
+                      <div>
+                        <button
+                          onClick={() => openModal(leitor.id)}
+                          className="btn-livros-alugados"
                         >
-                          Excluir
-                        </option>
-                      </select>
+                          Livros alugados
+                        </button>
+                      </div>
+                      <div className="dropdown-leitor">
+                        <button className="dropbtn-leitor">Ações</button>
+                        <div className="dropdown-content-leitor">
+                          <div
+                            onClick={() => setAction(['editar', leitor])}
+                            className="dropdown-item-leitor"
+                          >
+                            Editar
+                          </div>
+                          <div
+                            onClick={() => setAction(['excluir', leitor])}
+                            className="dropdown-item-leitor"
+                          >
+                            Excluir
+                          </div>
+                        </div>
+                      </div>
                     </th>
                   </tr>
                 ))}
@@ -161,18 +170,19 @@ const ListagemLeitor = () => {
               </button>
             </div>
           )}
-        </div>
+        </div >
         {leitores && leitores.length ? (
           <button
             className="leitor-button-novo"
             onClick={() => navigate(`/leitor/0`)}
           >
-            Novo
+            Cadastrar novo leitor
           </button>
         ) : (
           <p></p>
-        )}
-      </body>
+        )
+        }
+      </body >
     </>
   );
 };
