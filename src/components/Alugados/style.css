@@ -1,13 +1,17 @@
-.livros {
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* max-width: 500px; */
-  /* margin-bottom: 15px; */
-  /* width: 50px; */
-  /* justify-content: center; */
-}
-
-.capa {
-  /* width: 100px; */
-  /* height: 152px; */
+.btn-devolver {
+  cursor: pointer;
+  text-align: center;
+  width: auto;
+  right: 50%;
+  margin: auto;
+  margin-top: 2%;
+  margin-bottom: 5px;
+  padding: 7px;
+  color: var(--verde-claro);
+  border: none;
+  border-radius: 3px;
+  background-color: var(--verde-claro);
+  color: var(--verde-escuro);
+  transition: 0.5s;
+  box-shadow: 0px 0px 2px var(--verde-escuro);
 }

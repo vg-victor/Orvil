@@ -22,9 +22,15 @@ const ListagemLivro = () => {
   }, [pesquisa]);
 
   useEffect(() => {
-    if (action[0] === "alugar") openModal();
-    if (action[0] === "editar") navigate(`/livro/${action[1].id}`);
-    if (action[0] === "excluir") alert(action[1].id, action[1].titulo);
+    if (action[0] === "alugar") {
+      openModal();
+    }
+    if (action[0] === "editar") {
+      navigate(`/livro/${action[1].id}`);
+    }
+    if (action[0] === "excluir") {
+      alert(action[1].id, action[1].titulo);
+    }
   }, [action]);
 
   const load = async () => {

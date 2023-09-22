@@ -13,7 +13,7 @@
 
 .leitor-table-listagem {
   margin-top: 50px;
-  box-shadow: 0px 0px 3px #343e3d;
+  box-shadow: 0px 0px 3px var(--verde-escuro);
   color: var(--verde-claro);
   padding: 8px;
   font-family: Arial, Helvetica, sans-serif;
@@ -25,7 +25,7 @@
 }
 
 .leitor-table-listagem tr {
-  background-color: #343e3d;
+  background-color: var(--verde-escuro);
 }
 
 .leitor-table-listagem tr:nth-child(even) {
@@ -33,7 +33,7 @@
 }
 
 .leitor-table-listagem tr:hover {
-  color: #343e3d;
+  color: var(--verde-escuro);
   background-color: var(--verde-claro);
 }
 
@@ -44,7 +44,7 @@
 }
 
 .leitor-tabela-l1 {
-  color: #343e3d;
+  color: var(--verde-escuro);
   background-color: var(--verde-claro);
 }
 
@@ -59,7 +59,7 @@
   border-radius: 3px;
   background-color: var(--verde-claro);
   border: 1px solid transparent;
-  color: #343e3d;
+  color: var(--verde-escuro);
   transition: 0.3s;
 }
 
@@ -67,7 +67,7 @@
   transition: 0.3s;
   color: var(--verde-claro);
   border: 1px solid var(--verde-claro);
-  background-color: #343e3d;
+  background-color: var(--verde-escuro);
   cursor: pointer;
 }
 
@@ -82,9 +82,9 @@
   border: none;
   border-radius: 3px;
   background-color: var(--verde-claro);
-  color: #343e3d;
+  color: var(--verde-escuro);
   transition: 0.5s;
-  box-shadow: 0px 0px 2px #343e3d;
+  box-shadow: 0px 0px 2px var(--verde-escuro);
 }
 
 .leitor-option-excluir {
@@ -111,9 +111,9 @@
   border: none;
   border-radius: 3px;
   background-color: var(--verde-claro);
-  color: #343e3d;
+  color: var(--verde-escuro);
   transition: 0.5s;
-  box-shadow: 0px 0px 2px #343e3d;
+  box-shadow: 0px 0px 2px var(--verde-escuro);
 }
 
 .dropdown-leitor {
@@ -130,7 +130,7 @@
   cursor: pointer;
   padding: 7px;
   margin: 0;
-  box-shadow: 0px 0px 2px #343e3d;
+  box-shadow: 0px 0px 2px var(--verde-escuro);
 }
 
 .dropdown-content-leitor {
@@ -182,15 +182,15 @@
   border: none;
   border-radius: 3px;
   background-color: var(--verde-claro);
-  color: #343e3d;
+  color: var(--verde-escuro);
   transition: 0.5s;
-  box-shadow: 0px 0px 2px #343e3d;
+  box-shadow: 0px 0px 2px var(--verde-escuro);
 }
 
 .ipt-pesquisar {
   margin-top: 10px;
   background-color: var(--verde-claro);
-  color: #343e3d;
+  color: var(--verde-escuro);
   text-align: center;
   display: inline;
   border: none;
@@ -201,10 +201,9 @@
 }
 
 .modal-livros-alugados {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  display: flex;
   gap: 15px;
   padding: 15px;
-  height: 350px;
-  width: 700px;
+  height: 400px;
+  width: 800px;
 }

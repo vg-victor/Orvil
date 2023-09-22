@@ -90,18 +90,6 @@
   width: 100%;
 }
 
-.div-livro-listagem img {
-  margin-right: 10px;
-  width: 100px;
-  height: 152px;
-  border-radius: 5px;
-}
-
-.div-livro-listagem h1 {
-  font-size: 20px;
-  font-weight: 500;
-}
-
 .livros button {
   margin-left: 6%;
   margin-top: 13px;

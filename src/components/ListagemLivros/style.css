@@ -1,29 +1,39 @@
 .container-infos-livro {
-  max-width: 170px;
-  height: 150px;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
 .capa {
   width: 100px;
+  height: 152px;
+  margin-bottom: 10px;
+}
+
+.capa img {
+  margin-right: 10px;
+  width: 100px;
+  height: 152px;
+  border-radius: 5px;
 }
 
 .alugado {
   text-align: center;
+  margin-top: 7px;
+}
+
+.titulo-livro {
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .livros {
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  flex-direction: row;
-  flex-wrap: wrap;
+  justify-content: center;
   border: 1px solid var(--verde-claro);
   color: var(--verde-claro);
-  max-width: 350px;
+  width: 400px;
+  max-width: 450px;
   padding: 20px;
   border-radius: 7px;
-  background-color: transparent;
 }
 
 .acoes {

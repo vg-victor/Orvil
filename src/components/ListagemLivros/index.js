@@ -24,7 +24,7 @@ export default ({
         </div>
         <div className="container-infos-livro">
           <div className="infos-livro">
-            <h1>{livro.titulo}</h1>
+            <h1 className="titulo-livro">{livro.titulo}</h1>
             <p className="livro_autor">{livro.autor}</p>
             <p>Editora: {livro.editora}</p>
             <p>Lançamento: {livro.ano}</p>
