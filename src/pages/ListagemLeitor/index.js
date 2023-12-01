@@ -6,11 +6,15 @@ import "./style.css";
 import api from "../../services/api.js";
 import Navbar from "../../components/Navbar";
 import Alugados from "../../components/Alugados";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 const ListagemLeitor = () => {
   const [action, setAction] = useState(["", {}]);
   const [leitores, setLeitores] = useState([]);
   const [pesquisa, setPesquisa] = useState("");
+  const [registro, setRegistro] = useState(null);
+  const [leitorAtualId, setLeitorAtualId] = useState(0);
   const navigate = useNavigate();
   const [visible, setVisible] = useState(false);
   const [alugados, setAlugados] = useState([]);
@@ -81,10 +85,16 @@ const ListagemLeitor = () => {
   };
 
   const openModal = async (id) => {
-    const response = await api.get(`registros/getByLeitor?leitorId=${id}`);
-    setAlugados(response.data.map((e) => e.livro));
+    await obterAlugados(id)
+    setLeitorAtualId(id);
     setVisible(true);
   };
+
+  const obterAlugados = async (id) => {
+    const response = await api.get(`registros/getByLeitor?leitorId=${id}`);
+    setAlugados(response.data.map((e) => e.livro));
+    setRegistro(response.data);
+  }
 
   return (
     <>
@@ -94,20 +104,37 @@ const ListagemLeitor = () => {
         style={customStyles}
         contentLabel="Orvil"
       >
-        <div className="btn-fechar-ipt-pesquisar">
-          <button onClick={() => setVisible(false)} className="btn-fechar">
-            Fechar
-          </button>
+        <div className="container-btn-fechar">
+          <a onClick={() => setVisible(false)} className="btn-fechar">
+            <FontAwesomeIcon icon={faXmark} />
+          </a>
         </div>
-        <div className="modal-livros-alugados">
-          {alugados.map((item) => (
-            <Alugados key={`alugados-${item.id}`} livro={item} />
-          ))}
+        <div className="title-livros-alugados">
+          <h1 className="h1-livros-alugados">Livros alugados</h1>
+          <div className="modal-livros-alugados">
+            {alugados.map((item) => (
+              <Alugados leitorAtualId={leitorAtualId} load={obterAlugados} key={`alugados-${item.id}`} livro={item} registro={registro?.find(r => r.livro.id === item.id)} />
+            ))}
+          </div>
         </div>
-      </Modal>
+        <div><p style={{ height: "25px" }}></p></div>
+      </Modal >
+      <Navbar setPesquisa={setPesquisa} />
       <body className="leitor-body-listagem">
-        <Navbar setPesquisa={setPesquisa} />
         <div className="leitor-div-listagem">
+          <div className="btn-cadastro-leitor">
+            {leitores && leitores.length ? (
+              <button
+                className="leitor-button-novo"
+                onClick={() => navigate(`/leitor/0`)}
+              >
+                Cadastrar novo leitor
+              </button>
+            ) : (
+              <p></p>
+            )
+            }
+          </div>
           {leitores && leitores.length ? (
             <table className="leitor-table-listagem">
               <tr>
@@ -170,17 +197,6 @@ const ListagemLeitor = () => {
             </div>
           )}
         </div >
-        {leitores && leitores.length ? (
-          <button
-            className="leitor-button-novo"
-            onClick={() => navigate(`/leitor/0`)}
-          >
-            Cadastrar novo leitor
-          </button>
-        ) : (
-          <p></p>
-        )
-        }
       </body >
     </>
   );

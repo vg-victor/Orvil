@@ -2,8 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
-  padding: 100px 0 50px;
+  padding: 50px 0 50px;
 }
 
 .form_livro {

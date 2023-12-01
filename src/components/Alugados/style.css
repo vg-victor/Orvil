@@ -1,11 +1,13 @@
+.container-livros-alugados {
+  display: flex;
+  text-align: center;
+  align-items: center;
+  flex-direction: column;
+}
+
 .btn-devolver {
   cursor: pointer;
-  text-align: center;
-  width: auto;
-  right: 50%;
-  margin: auto;
-  margin-top: 2%;
-  margin-bottom: 5px;
+  margin-top: 5%;
   padding: 7px;
   color: var(--verde-claro);
   border: none;

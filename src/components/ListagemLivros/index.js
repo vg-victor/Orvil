@@ -31,35 +31,36 @@ export default ({
             <p>Edição: {livro.edicao}</p>
             <p>Gênero: {livro.genero}</p>
           </div>
-          <div className="acoes">
-            {mostrarAcoes && (
-              <div className="dropdown">
-                <button className="dropbtn">Ações</button>
-                <div className="dropdown-content">
-                  <div
-                    className="dropdown-item"
-                    onClick={() => setAction(['editar', livro])}
-                  >
-                    Editar
-                  </div>
-                  <div
-                    className="dropdown-item"
-                    onClick={() => setAction(['excluir', livro])}
-                  >
-                    Excluir
-                  </div>
-                  {!livro?.alugado && (
+          {!livro?.alugado && (
+            <div className="acoes">
+              {mostrarAcoes && (
+                <div className="dropdown">
+                  <button className="dropbtn">Ações</button>
+                  <div className="dropdown-content">
+                    <div
+                      className="dropdown-item"
+                      onClick={() => setAction(['editar', livro])}
+                    >
+                      Editar
+                    </div>
+                    <div
+                      className="dropdown-item"
+                      onClick={() => setAction(['excluir', livro])}
+                    >
+                      Excluir
+                    </div>
                     <div
                       className="dropdown-item"
                       onClick={() => setAction(['alugar', livro])}
                     >
                       Alugar
                     </div>
-                  )}
+                    {/* )} */}
+                  </div>
                 </div>
-              </div>
-            )}
-          </div>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>

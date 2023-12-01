@@ -6,7 +6,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 270px;
+  width: 30%;
 }
 
 .link-editar {
@@ -24,7 +24,7 @@
 
 .leitor-label {
   text-align: center;
-  margin-top: 10%;
+  margin-top: 3%;
   margin-bottom: 1%;
   padding: 1px;
   color: var(--verde-claro);
@@ -35,7 +35,7 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 80%;
+  width: 100%;
   max-width: 200px;
   border: none;
   outline: none;
@@ -43,11 +43,8 @@
   border-radius: 3px;
   padding: 7px;
   width: 100%;
-  background-color: transparent;
-  color: var(--verde-claro);
-  outline: none;
-  flex-wrap: wrap;
-  border-bottom: 1px solid var(--verde-claro);
+  background-color: var(--verde-claro);
+  color: var(--verde-escuro);
 }
 
 
@@ -73,7 +70,7 @@
   text-align: center;
   margin: auto;
   margin-top: 25px;
-  width: 80px;
+  width: 30%;
   padding: 7px;
   color: var(--verde-claro);
   display: block;

@@ -46,10 +46,15 @@ const ListagemLivro = () => {
   const alert = (id, titulo) => {
     Swal.fire({
       icon: "warning",
-      title: `Excluir livro ${titulo}?`,
+      iconColor: "var(--verde-claro)",
+      titleText: `Excluir leitor(a) ${titulo}?`,
       showCancelButton: true,
       confirmButtonText: "Sim",
-      confirmButtonColor: "green",
+      confirmButtonColor: "var(--verde-claro)",
+      cancelButtonText: "Cancelar",
+      cancelButtonColor: "rgb(38, 48, 46)",
+      background: "var(--verde-escuro)",
+      color: "var(--verde-claro)",
     }).then((response) => {
       if (response.isConfirmed) {
         excluir(id);

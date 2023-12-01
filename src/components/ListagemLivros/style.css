@@ -1,11 +1,9 @@
 .container-infos-livro {
-  padding-left: 15px;
+  padding-left: 10px;
 }
 
 .capa {
   width: 100px;
-  height: 152px;
-  margin-bottom: 10px;
 }
 
 .capa img {
@@ -17,7 +15,7 @@
 
 .alugado {
   text-align: center;
-  margin-top: 7px;
+  margin-top: 3px;
 }
 
 .titulo-livro {
@@ -30,7 +28,7 @@
   justify-content: center;
   border: 1px solid var(--verde-claro);
   color: var(--verde-claro);
-  width: 400px;
+  width: 350px;
   max-width: 450px;
   padding: 20px;
   border-radius: 7px;
